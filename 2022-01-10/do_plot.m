@@ -6,8 +6,8 @@ Nfft = 2*1024;
 Navg = 16;
 Nskip = 10000;
 
-in_pattern = '~/Downloads/tetra2/tetra/tetra_rx_fs=480kHz_f0=%dMHz_rxgain=%.1fdB_txgain=%.1fdB_shift=50kHz_aa.dat';
-out_pattern = './data/tetra_rx_fs=480kHz_rxgain=%.1fdB_txgain=%.1fdB_shift=50kHz.png';
+in_pattern = '~/Downloads/tetra2/tetra/tetra_rx_fs=480kHz_f0=%dMHz_rxgain=%.1fdB_txgain=%.1fdB_shift=50kHz_bb.dat';
+out_pattern = './data/tetra_rx_fs=480kHz_rxgain=%.1fdB_txgain=%.1fdB_shift=50kHz_cal.png';
 
 for tx_gain = [10,20,30,40,50]
 for rx_gain = [10,20,30,40,50]
@@ -52,7 +52,7 @@ plot((-Nfft/2:Nfft/2-1)*Fs/Nfft*1e-3, 10*log10(ddd), 'k-');
 legend('50MHz', '1GHz', '2GHz', '3GHz');
 xlabel('frequency, kHz');
 ylabel('magnitude, dB');
-title(sprintf('TETRA shift=50kHz rx=%.0fdB tx=%.0fdB', rx_gain, tx_gain));
+title(sprintf('TETRA shift=50kHz rx=%.0fdB tx=%.0fdB (force calibration)', rx_gain, tx_gain));
 saveas(h, sprintf(out_pattern, rx_gain, tx_gain), 'png');
 close(h);
 
